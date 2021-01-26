@@ -1,11 +1,22 @@
+import { useState } from "react";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import { useAuth } from "../lib/auth";
+import { useDb, ProvideDb } from "@/lib/db";
+
+import Navbar from "../components/Navbar";
+import dynamic from "next/dynamic";
+import MarkerForm from "@/components/MarkerForm";
 
 export default function Home() {
+  const auth = useAuth();
+  const DynamicComponentWithNoSSR = dynamic(() => import("../components/Map"), {
+    ssr: false,
+  });
+
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta
           name="viewport"
@@ -19,57 +30,22 @@ export default function Home() {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""
+        />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>our Park</h1>
+      <main>
+        {/* <ProvideDb> */}
+        <Navbar />
+        {/* </ProvideDb> */}
 
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <DynamicComponentWithNoSSR />
+        {/* <MarkerForm /> */}
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
     </div>
   );
 }

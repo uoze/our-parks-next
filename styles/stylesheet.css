@@ -1,0 +1,73 @@
+.navbar {
+  background-color: white;
+  width: 100vw;
+  height: 3rem;
+  display: flex;
+  top: 0;
+  left: 0;
+  position: absolute;
+  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 1rem;
+  z-index: 1;
+}
+.user {
+  align-content: center;
+}
+
+.signup {
+  color: green;
+}
+
+.logo {
+  color: green;
+  font-size: 2rem;
+  align-self: center;
+}
+
+.map {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  z-index: 0;
+  padding: 0;
+  margin-top: 3.5rem;
+}
+
+.marker-form {
+  display: flex;
+  flex-direction: column;
+  border: black 10px;
+  background-color: white;
+  position: absolute;
+  top: 3.9rem;
+  left: 1rem;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+}
+
+.marker-form input {
+  width: calc(100% - 0.6rem);
+}
+
+.close {
+  color: red;
+  top: 4px;
+  right: 4px;
+  position: absolute;
+  border: none;
+  background-color: white;
+}
+
+.submit {
+  margin-top: 3px;
+  color: white;
+  background-color: green;
+  width: 100%;
+}
+
+@media (max-width: 400px) {
+  .logo {
+    font-size: 1.3rem;
+  }
+}
