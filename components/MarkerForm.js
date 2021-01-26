@@ -7,8 +7,12 @@ const MarkerForm = ({ handleMarker }) => {
 
   const handleClose = () => {
     handleMarker();
-    db.setLocatorOn(false);
     db.setLatlng(false);
+  };
+
+  const onSubmit = (values) => {
+    console.log("VALUES IN FORM-----", values);
+    db.createPost(values);
   };
 
   return (
@@ -16,7 +20,7 @@ const MarkerForm = ({ handleMarker }) => {
       <button type="button" className="close" onClick={handleClose}>
         X
       </button>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <label>Title</label>
         <br />
         <input

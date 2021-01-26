@@ -24,7 +24,7 @@ const Navbar = () => {
   const handleSignout = () => {
     db.setAddMarker(false);
     auth.signout();
-    db.setLatlng();
+    db.setLatlng(null);
   };
 
   console.log("!dbMarker in navbar", !db.addMarker, auth?.user);
