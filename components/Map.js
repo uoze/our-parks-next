@@ -42,7 +42,7 @@ const Map = () => {
       />
       <ZoomControl position="topright" />
 
-      {db.posts && <MarkerLoader />}
+      {db.posts?.length && <MarkerLoader />}
       {db.addMarker && <MapGetLatLng />}
       {db.latlng && <Marker position={db.latlng} />}
     </MapContainer>
