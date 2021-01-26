@@ -11,7 +11,7 @@ const MarkerForm = ({ handleMarker }) => {
   };
 
   const onSubmit = (values, e) => {
-    console.log("VALUES IN FORM-----", values);
+    // console.log("VALUES IN FORM-----", values);
     db.createPost(values);
     e.target.reset({
       title: "",

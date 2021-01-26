@@ -6,16 +6,18 @@ const MarkerLoader = () => {
   const db = useDb();
   let markers;
 
-  markers = db.posts.map((post) => {
-    return (
-      <Marker position={post.latlng}>
-        <Popup>
-          {post.title}
-          {post.description}
-        </Popup>
-      </Marker>
-    );
-  });
+  if (db.posts.length) {
+    markers = db.posts.map((post) => {
+      return (
+        <Marker position={post.latlng}>
+          <Popup>
+            {post.title}
+            {post.description}
+          </Popup>
+        </Marker>
+      );
+    });
+  }
 
   return markers ? markers : null;
 };

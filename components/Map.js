@@ -20,7 +20,7 @@ const Map = () => {
   ];
 
   useEffect(() => {
-    console.log("Getting realtime posts in component");
+    // console.log("Getting realtime posts in component");
     db.getRealtimePosts();
     // return () => {
     //   cleanup;

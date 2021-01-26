@@ -27,7 +27,7 @@ const Navbar = () => {
     db.setLatlng(null);
   };
 
-  console.log("!dbMarker in navbar", !db.addMarker, auth?.user);
+  // console.log("!dbMarker in navbar", !db.addMarker, auth?.user);
   return (
     <div className="navbar">
       <div className="logo">🌲ourParks</div>
