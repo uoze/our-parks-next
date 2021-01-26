@@ -3,16 +3,22 @@ import { useForm } from "react-hook-form";
 
 const MarkerForm = ({ handleMarker }) => {
   const db = useDb();
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, reset } = useForm();
 
   const handleClose = () => {
     handleMarker();
     db.setLatlng(false);
   };
 
-  const onSubmit = (values) => {
+  const onSubmit = (values, e) => {
     console.log("VALUES IN FORM-----", values);
     db.createPost(values);
+    e.target.reset({
+      title: "",
+      description: "",
+      category: "General",
+      latlng: "false",
+    });
   };
 
   return (
