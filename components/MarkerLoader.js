@@ -11,7 +11,8 @@ const MarkerLoader = () => {
       return (
         <Marker position={post.latlng}>
           <Popup>
-            {post.title}
+            <h4>{post.title}</h4>
+            <hr />
             {post.description}
           </Popup>
         </Marker>
