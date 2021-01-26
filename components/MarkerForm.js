@@ -8,6 +8,7 @@ const MarkerForm = ({ handleMarker }) => {
   const handleClose = () => {
     handleMarker();
     db.setLocatorOn(false);
+    db.setLatlng(false);
   };
 
   return (
@@ -18,7 +19,12 @@ const MarkerForm = ({ handleMarker }) => {
       <form>
         <label>Title</label>
         <br />
-        <input type="text" name="title" autoComplete="off" ref={register} />
+        <input
+          type="text"
+          name="title"
+          autoComplete="off"
+          ref={register({ required: true })}
+        />
         <br />
         <label>Description</label>
         <br />
@@ -26,12 +32,12 @@ const MarkerForm = ({ handleMarker }) => {
           type="text"
           name="description"
           autoComplete="off"
-          ref={register}
+          ref={register({ required: true })}
         />
         <br />
         <label>Category</label>
         <br />
-        <select name="category" ref={register}>
+        <select name="category" ref={register({ required: true })}>
           <option>General</option>
           <option>Fauna</option>
           <option>Flora</option>
@@ -39,14 +45,12 @@ const MarkerForm = ({ handleMarker }) => {
         <br />
         <label>LatLng</label>
         <br />
-        <input type="text" />
+        <input type="text" name="latlng" value={db.latlng} ref={register} />
         <br />
-        {!db.locatorOn ? (
-          <button type="button" onClick={() => db.setLocatorOn(!db.locatorOn)}>
-            Choose Location
+        {db.latlng && (
+          <button type="submit" className="submit">
+            submit
           </button>
-        ) : (
-          <button type="button">submit</button>
         )}
       </form>
     </div>

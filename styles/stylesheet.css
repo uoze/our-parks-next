@@ -46,6 +46,10 @@
   border-radius: 10px;
 }
 
+.marker-form input {
+  width: calc(100% - 0.6rem);
+}
+
 .close {
   color: red;
   top: 4px;
@@ -53,6 +57,13 @@
   position: absolute;
   border: none;
   background-color: white;
+}
+
+.submit {
+  margin-top: 3px;
+  color: white;
+  background-color: green;
+  width: 100%;
 }
 
 @media (max-width: 400px) {

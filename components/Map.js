@@ -26,7 +26,9 @@ const Map = () => {
       />
       <ZoomControl position="topright" />
       {/* <MapGetLatLng /> */}
-      <Marker position={position} />
+
+      {db.addMarker && <MapGetLatLng />}
+      {db.latlng && <Marker position={db.latlng} />}
     </MapContainer>
   );
 };
