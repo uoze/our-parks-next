@@ -1,20 +1,20 @@
 import { useState } from "react";
 import Head from "next/head";
 import { useAuth } from "../lib/auth";
-import styles from "../styles/Home.module.css";
+
+import Navbar from "../components/Navbar";
+import dynamic from "next/dynamic";
 
 export default function Home() {
   const auth = useAuth();
-  const [form, setForm] = useState({
-    email: "",
-    password: "",
+  const DynamicComponentWithNoSSR = dynamic(() => import("../components/Map"), {
+    ssr: false,
   });
-  console.log(form);
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta
           name="viewport"
@@ -28,19 +28,15 @@ export default function Home() {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
         <link rel="icon" href="/favicon.ico" />
+        <link
+          href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css"
+          rel="stylesheet"
+        />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className="title">ourParks </h1>
-        <button onClick={() => auth.signInWithGoogle()}>
-          {" "}
-          SIGN IN WITH GOOGLE
-        </button>
-
-        <div>{auth?.user?.email}</div>
-        {auth?.user && (
-          <button onClick={(e) => auth.signout()}> SIGN OUT </button>
-        )}
+      <main>
+        <Navbar />
+        <DynamicComponentWithNoSSR />
       </main>
     </div>
   );

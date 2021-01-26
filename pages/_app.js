@@ -1,4 +1,5 @@
 import { ProvideAuth } from "../lib/auth";
+import "@/styles/stylesheet.css";
 
 function MyApp({ Component, pageProps }) {
   return (
