@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Head from "next/head";
 import { useAuth } from "../lib/auth";
+import { useDb, ProvideDb } from "@/lib/db";
 
 import Navbar from "../components/Navbar";
 import dynamic from "next/dynamic";
+import MarkerForm from "@/components/MarkerForm";
 
 export default function Home() {
   const auth = useAuth();
@@ -29,14 +31,20 @@ export default function Home() {
         <meta name="theme-color" content="#317EFB" />
         <link rel="icon" href="/favicon.ico" />
         <link
-          href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css"
           rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""
         />
       </Head>
 
       <main>
-        <Navbar />
+        <ProvideDb>
+          <Navbar />
+        </ProvideDb>
+
         <DynamicComponentWithNoSSR />
+        {/* <MarkerForm /> */}
       </main>
     </div>
   );

@@ -1,13 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MapContainer, Marker, TileLayer, ZoomControl } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
 import MapGetLatLng from "./MapGetLatLng.js";
 
 const Map = () => {
   const position = [40.781172, -73.966654];
   const maxBounds = [
-    [40.459048, -74.296457], //Southwest
-    [40.898345, -73.718474], //Northeast
+    [40.459048, -74.296457], //SouthwestNYC
+    [40.898345, -73.718474], //NortheastNYC
   ];
 
   return (
@@ -25,7 +24,7 @@ const Map = () => {
       />
       <ZoomControl position="topright" />
       {/* <MapGetLatLng /> */}
-      {/* <Marker /> */}
+      <Marker position={position} />
     </MapContainer>
   );
 };

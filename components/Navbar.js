@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useAuth } from "@/lib/auth";
-import { createPost } from "@/lib/db";
+import { useDb } from "@/lib/db";
+import MarkerForm from "@/components/MarkerForm";
 
 const Navbar = () => {
   const auth = useAuth();
+  const db = useDb();
 
   const handlePost = () => {
-    createPost({
+    db.createPost({
       userId: auth.user.uid,
       category: "Fauna",
       postTitle: "Cooper's Hawk Sighting!",
@@ -15,13 +17,26 @@ const Navbar = () => {
     });
   };
 
+  const handleMarker = () => {
+    db.setAddMarker(!db.addMarker);
+  };
+
+  console.log("!dbMarker in navbar", !db.addMarker, auth?.user);
   return (
     <div className="navbar">
       <div className="logo">🌲ourParks</div>
-      {auth?.user && (
-        <button type="button" onClick={handlePost}>
-          ADD MARKER
-        </button>
+      {auth?.user && !db.addMarker ? (
+        <div className="user">
+          <button
+            type="button"
+            className="add-marker-button"
+            onClick={handleMarker}
+          >
+            ADD MARKER
+          </button>
+        </div>
+      ) : (
+        <MarkerForm />
       )}
       <div className="user">
         {auth?.user ? (
