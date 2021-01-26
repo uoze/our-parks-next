@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { MapContainer, Marker, TileLayer, ZoomControl } from "react-leaflet";
 import MapGetLatLng from "./MapGetLatLng.js";
+import { useDb } from "@/lib/db";
 
 const Map = () => {
+  const db = useDb();
   const position = [40.781172, -73.966654];
   const maxBounds = [
     [40.459048, -74.296457], //SouthwestNYC

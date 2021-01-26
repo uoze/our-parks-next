@@ -39,9 +39,9 @@ export default function Home() {
       </Head>
 
       <main>
-        <ProvideDb>
-          <Navbar />
-        </ProvideDb>
+        {/* <ProvideDb> */}
+        <Navbar />
+        {/* </ProvideDb> */}
 
         <DynamicComponentWithNoSSR />
         {/* <MarkerForm /> */}

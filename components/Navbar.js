@@ -21,26 +21,33 @@ const Navbar = () => {
     db.setAddMarker(!db.addMarker);
   };
 
+  const handleSignout = () => {
+    db.setAddMarker(false);
+    auth.signout();
+  };
+
   console.log("!dbMarker in navbar", !db.addMarker, auth?.user);
   return (
     <div className="navbar">
       <div className="logo">🌲ourParks</div>
-      {auth?.user && !db.addMarker ? (
-        <div className="user">
-          <button
-            type="button"
-            className="add-marker-button"
-            onClick={handleMarker}
-          >
-            ADD MARKER
-          </button>
-        </div>
-      ) : (
-        <MarkerForm />
-      )}
+      {auth?.user ? (
+        !db.addMarker ? (
+          <div className="user">
+            <button
+              type="button"
+              className="add-marker-button"
+              onClick={handleMarker}
+            >
+              ADD MARKER
+            </button>
+          </div>
+        ) : (
+          <MarkerForm handleMarker={handleMarker} />
+        )
+      ) : null}
       <div className="user">
         {auth?.user ? (
-          <button type="button" onClick={() => auth.signout()}>
+          <button type="button" onClick={handleSignout}>
             SIGN OUT
           </button>
         ) : (

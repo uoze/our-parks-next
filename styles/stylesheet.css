@@ -34,11 +34,25 @@
 }
 
 .marker-form {
+  display: flex;
+  flex-direction: column;
   border: black 10px;
-  background-color: blue;
+  background-color: white;
   position: absolute;
-  top: 4rem;
+  top: 3.9rem;
   left: 1rem;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+}
+
+.close {
+  color: red;
+  top: 4px;
+  right: 4px;
+  position: absolute;
+  border: none;
+  background-color: white;
 }
 
 @media (max-width: 400px) {
