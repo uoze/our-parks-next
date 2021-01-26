@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 const MarkerForm = ({ handleMarker }) => {
   const db = useDb();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, errors } = useForm();
 
   const handleClose = () => {
     handleMarker();
@@ -21,24 +21,34 @@ const MarkerForm = ({ handleMarker }) => {
         X
       </button>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label>Title</label>
+        <label>Title *</label>
         <br />
         <input
           type="text"
           name="title"
           autoComplete="off"
-          ref={register({ required: true })}
+          ref={register({ required: "Please enter a title" })}
         />
-        <br />
-        <label>Description</label>
+        {errors.title ? (
+          <div style={{ color: "red" }}>{errors.title.message}</div>
+        ) : (
+          <br />
+        )}
+
+        <label>Description *</label>
         <br />
         <textarea
           type="text"
           name="description"
           autoComplete="off"
-          ref={register({ required: true })}
+          ref={register({ required: "Please enter a description" })}
         />
-        <br />
+        {errors.description ? (
+          <div style={{ color: "red" }}>{errors.description.message}</div>
+        ) : (
+          <br />
+        )}
+
         <label>Category</label>
         <br />
         <select name="category" ref={register({ required: true })}>
