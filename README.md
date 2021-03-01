@@ -1,34 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Deployed [here](our-parks-next.vercel.app)!
 
-## Getting Started
+## About
 
-First, run the development server:
+This is a prototype of a passion project I hope to build on soon. All research and work done in ~4 days!
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+At the moment, anyone can view markers posted around NYC in real-time, and hopefully about NYC's green spaces!
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If you sign in with Google, you can add your own markers (again, hopefully about NYC's green spaces)!
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Tech Stack
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+I dabbled with Next.js and its next-pwa module to get a taste of how PWAs can function.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+React Hook Forms for the input.
 
-## Learn More
+Leaflet.js (with its React library) for the map.
 
-To learn more about Next.js, take a look at the following resources:
+Firebase for its Auth, and Firestore for its real-time updates. 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Challenges
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+I had a lot of trouble with an earlier version trying to make the input form look like an overlay, but I think it looks rather nice without any noticeable hiccups now!
 
-## Deploy on Vercel
+Mapping is always a challenge, but I definitely learned a lot about Leaflet.js and how to make it work with React-Leaflet. A minor still present is consistently getting the map framed properly on the screen, such that the attributions always show. 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Firebase was suggested to me for the live updates, and while it is likely more easier to implement than a whole backend with Express and maybe MongoDB, it was a bit of work to look through all the docs and learn its querying.
