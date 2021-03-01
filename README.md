@@ -16,7 +16,9 @@ React Hook Forms for the input.
 
 Leaflet.js (with its React library) for the map.
 
-Firebase for its Auth, and Firestore for its real-time updates. 
+Firebase for its Auth, and Firestore for its real-time updates.
+
+I also tried using React.Context for auth and some map data instead of Redux.
 
 ## Challenges
 
